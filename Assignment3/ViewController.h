@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @property (nonatomic, assign) BOOL allSelected;
 
@@ -19,6 +19,8 @@
 @property (nonatomic, weak) IBOutlet UIButton * selectAll;
 
 @property (nonatomic, weak) IBOutlet UIButton * removeAll;
+
+@property (nonatomic, weak) IBOutlet UIButton * addFruit;
 
 -(IBAction)selectAllOrNone:(id)sender;
 

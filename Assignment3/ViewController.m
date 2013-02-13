@@ -25,15 +25,6 @@
     _allSelected = NO;
     
     _cart = [NSMutableArray arrayWithCapacity:0];
-    
-    for(int i = 0; i < 50; i++){
-        NSString * fruitName = [NSString stringWithFormat:@"Banana # %d", (i+1)];
-        Fruit * anonFruit = [[Fruit alloc] initWithWithName:fruitName andColor:@"Yellow" andShape:@"Curved"];
-        anonFruit.url = @"http://en.m.wikipedia.org/wiki/Banana";
-        [_cart addObject:anonFruit];
-    }
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,6 +74,34 @@
     [_cartView reloadData];
 }
 
+-(IBAction)addFruit:(id)sender
+{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add Fruit"message:@"Which fruit would you like to add?" delegate:self cancelButtonTitle: @"Cancel" otherButtonTitles: @"Banana", @"Apple", nil];
+    [alert show];
+}
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        int incart = [_cart count];
+        NSString * fruitName = [NSString stringWithFormat:@"Banana # %d", (incart+1)];
+        Fruit * anonFruit = [[Fruit alloc] initWithWithName:fruitName andColor:@"Yellow" andShape:@"Curved"];
+        anonFruit.url = @"http://en.m.wikipedia.org/wiki/Banana";
+        [_cart addObject:anonFruit];
+        [_cartView reloadData];
+    }
+    if (buttonIndex == 2)
+    {
+        int incart = [_cart count];
+        NSString * fruitName = [NSString stringWithFormat:@"Apple # %d", (incart+1)];
+        Fruit * anonFruit = [[Fruit alloc] initWithWithName:fruitName andColor:@"Red" andShape:@"Round"];
+        anonFruit.url = @"http://en.m.wikipedia.org/wiki/Apple";
+        [_cart addObject:anonFruit];
+        [_cartView reloadData];
+    }
+}
 
 #pragma mark UITableView dataSource and delegate methods
 
